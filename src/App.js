@@ -1,24 +1,61 @@
-import logo from './logo.svg';
+import React from "react"
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+import Apple from "./screens/Apple";
+import Google from './screens/Google'
 
 function App() {
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <Router>
+      <div class="container" >
+        {/* <img style={{position:'absolute'}} src={require('./assets/Arrow POS banner_BLK.png')} class="card-img-top" alt="..." /> */}
+        <div style={{flexDirection:'row',display:'flex',justifyContent:'space-evenly',marginBottom:20,marginTop:20}}>
+
+          <Link to="/apple">
+
+            <div className="card" style={{ width: "18rem",height:'18rem',alignItems:'center' }}>
+              <img style={{ width: 400 }} src={require('./assets/Apple-Logo.png')} class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text">Apple Developer Account</p>
+              </div>
+            </div>
+          </Link>
+
+
+
+          <Link to="/google">
+            <div className="card" style={{ width: "18rem",height:'18rem',alignItems:'center' }}>
+              <img style={{ width: 200 }} src={require('./assets/Google__G__Logo.svg.png')} class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text">Google Developer Account</p>
+              </div>
+            </div>
+          </Link>
+
+
+
+        </div>
+
+
+
+
+        <Routes>
+          <Route exact path="/apple" element={<Apple />} />
+          <Route exact path="/google" element={<Google />} />
+        </Routes>
+
+
+
+      </div>
+    </Router>
   );
 }
 
